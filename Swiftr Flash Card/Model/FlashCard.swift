@@ -9,16 +9,16 @@
 import Foundation
 
 class FlashCard {
-    
     let question: String
     let answer: String
     let category: Category
+    let creator: AppUser
     
-    init(question: String, answer: String, category: Category) {
+    init(question: String, answer: String, category: Category, creator: AppUser) {
         self.question = question
         self.answer = answer
         self.category = category
+        self.creator = creator
     }
-    
 }
 

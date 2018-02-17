@@ -45,7 +45,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eBo-dQ-bTk"/>
-                                    <segue destination="n8j-bc-9Bt" kind="show" id="c1a-g6-3iW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsE-PK-lGN">
@@ -55,7 +54,7 @@
                                     <color key="titleColor" red="0.65513437986373901" green="0.65222650766372681" blue="0.57711946964263916" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LMb-Pz-6bP" kind="presentation" id="ft8-oE-j3j"/>
+                                    <segue destination="LMb-Pz-6bP" kind="show" id="T4w-Sb-Pnd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -82,15 +81,17 @@
                     <connections>
                         <outlet property="emailTextField" destination="ROh-aA-5c5" id="ufB-MO-CeO"/>
                         <outlet property="passwordTextField" destination="Kt9-RN-XXR" id="gkz-9m-Xjb"/>
+                        <segue destination="n8j-bc-9Bt" kind="show" identifier="loginSegue" id="Rsd-MY-Rsi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-23" y="134"/>
         </scene>
         <!--Categories-->
         <scene sceneID="EKX-3d-qPw">
             <objects>
-                <viewController id="pBC-OT-bZS" sceneMemberID="viewController">
+                <viewController id="pBC-OT-bZS" customClass="CategoriesViewController" customModule="Swiftr_Flash_Card" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nhH-Rf-srl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,7 +100,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.20779138803482056" green="0.20770975947380066" blue="0.21597188711166382" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="7FD-BW-NxZ" style="IBUITableViewCellStyleDefault" id="YQd-GF-mST">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" textLabel="7FD-BW-NxZ" style="IBUITableViewCellStyleDefault" id="YQd-GF-mST">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YQd-GF-mST" id="d8z-yb-R1U">
@@ -121,6 +122,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pBC-OT-bZS" id="Wpg-6P-mUn"/>
+                                    <outlet property="delegate" destination="pBC-OT-bZS" id="yIh-Fw-cEo"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.35317063331604004" green="0.34092819690704346" blue="0.35323375463485718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -135,12 +140,18 @@
                     <navigationItem key="navigationItem" title="Categories" id="7rc-A4-lTP">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VOn-ZQ-6Bp">
                             <color key="tintColor" red="0.95341509580612183" green="0.94737356901168823" blue="0.80542844533920288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="createNewCategory:" destination="pBC-OT-bZS" id="iGK-09-1pW"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="categoriesTableView" destination="M3Q-jY-9SI" id="JBJ-pd-eVw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X94-1c-LSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1244" y="1675"/>
+            <point key="canvasLocation" x="-626" y="904"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aPF-Ba-5Tq">
@@ -155,12 +166,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BA2-1Q-k3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23" y="1675"/>
+            <point key="canvasLocation" x="-626" y="1639"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Account View Controller-->
         <scene sceneID="8AT-CH-kOi">
             <objects>
-                <viewController id="LMb-Pz-6bP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateAccountViewController" id="LMb-Pz-6bP" customClass="CreateAccountViewController" customModule="Swiftr_Flash_Card" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sos-aW-jXX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,6 +194,9 @@
                                 <state key="normal" title="Create">
                                     <color key="titleColor" red="0.65513437986373901" green="0.65222650766372681" blue="0.57711946964263916" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="createAccountButtonPressed:" destination="LMb-Pz-6bP" eventType="touchUpInside" id="WgW-XN-jMj"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJd-I2-1L8">
                                 <rect key="frame" x="61.5" y="102.5" width="252.5" height="45.5"/>
@@ -190,11 +204,17 @@
                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBL-bu-LBb">
-                                <rect key="frame" x="16" y="20" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBL-bu-LBb">
+                                <rect key="frame" x="16" y="20" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="TX8-7O-yI1"/>
+                                </constraints>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.65490196078431373" green="0.65098039215686276" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="LMb-Pz-6bP" eventType="touchUpInside" id="UKi-tb-FPn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.35317063331604004" green="0.34092819690704346" blue="0.35323375463485718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -206,19 +226,23 @@
                             <constraint firstItem="1E6-fK-nIt" firstAttribute="width" secondItem="zPp-HK-TIG" secondAttribute="width" id="YFM-2s-MXY"/>
                             <constraint firstItem="fik-SZ-uAw" firstAttribute="width" secondItem="1E6-fK-nIt" secondAttribute="width" id="aQ7-qb-T3l"/>
                             <constraint firstItem="zPp-HK-TIG" firstAttribute="top" secondItem="IJd-I2-1L8" secondAttribute="bottom" constant="32" id="fhT-uB-TKL"/>
-                            <constraint firstItem="GBL-bu-LBb" firstAttribute="top" secondItem="LRB-kd-gDg" secondAttribute="top" id="fzh-Xh-4hK"/>
-                            <constraint firstItem="GBL-bu-LBb" firstAttribute="leading" secondItem="LRB-kd-gDg" secondAttribute="leading" constant="16" id="ho9-yF-tBa"/>
                             <constraint firstItem="zPp-HK-TIG" firstAttribute="centerX" secondItem="Sos-aW-jXX" secondAttribute="centerX" id="lX8-n4-wDe"/>
                             <constraint firstItem="fik-SZ-uAw" firstAttribute="centerX" secondItem="Sos-aW-jXX" secondAttribute="centerX" id="qDq-KZ-ayL"/>
                             <constraint firstItem="fik-SZ-uAw" firstAttribute="top" secondItem="1E6-fK-nIt" secondAttribute="bottom" constant="16" id="qgn-j2-uBE"/>
+                            <constraint firstItem="GBL-bu-LBb" firstAttribute="top" secondItem="LRB-kd-gDg" secondAttribute="top" id="wxb-sj-Wiz"/>
+                            <constraint firstItem="GBL-bu-LBb" firstAttribute="leading" secondItem="LRB-kd-gDg" secondAttribute="leading" constant="16" id="x47-2O-9kp"/>
                             <constraint firstItem="IJd-I2-1L8" firstAttribute="centerX" secondItem="Sos-aW-jXX" secondAttribute="centerX" id="yaY-Pm-Gfa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LRB-kd-gDg"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="zPp-HK-TIG" id="O0I-59-zC2"/>
+                        <outlet property="passwordTextField" destination="1E6-fK-nIt" id="8F0-aY-hHU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQ5-bq-1PU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="904"/>
+            <point key="canvasLocation" x="561" y="904"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hrX-7O-tC4">
@@ -240,7 +264,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QB-ge-3JU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-639" y="904"/>
+            <point key="canvasLocation" x="-1428" y="904"/>
         </scene>
     </scenes>
 </document>

@@ -10,7 +10,14 @@ import Foundation
 
 class Category {
     let name: String
-    init(name: String) {
+    let createdBy: AppUser
+    
+    init(name: String, createdBy: AppUser) {
         self.name = name
+        self.createdBy = createdBy
+    }
+    
+    deinit {
+        print("category deinitialized")
     }
 }

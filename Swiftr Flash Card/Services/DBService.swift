@@ -17,7 +17,6 @@ import FirebaseDatabase
 class DBService: NSObject {
     
     private override init() {
-        
         rootRef = Database.database().reference()
         usersRef = rootRef.child("users")
         flashCardsRef = rootRef.child("flashCards")
@@ -26,6 +25,7 @@ class DBService: NSObject {
     }
     
     static let manager = DBService()
+    public weak var delegate: DBServiceDelegate?
     
     var flashCards = [FlashCard]()
     var categories = [Category]()
@@ -35,5 +35,7 @@ class DBService: NSObject {
     var categoriesRef: DatabaseReference!
     var flashCardsRef: DatabaseReference!
     
-    public weak var delegate: DBServiceDelegate?
+    func getUsersRef() -> DatabaseReference {return usersRef}
+    func getCategoriesRef() -> DatabaseReference {return categoriesRef}
+    func getFlashCardsRef() -> DatabaseReference {return flashCardsRef}
 }
