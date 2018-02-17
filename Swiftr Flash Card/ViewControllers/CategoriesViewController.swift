@@ -12,25 +12,47 @@ class CategoriesViewController: UIViewController {
     
     @IBOutlet weak var categoriesTableView: UITableView!
     @IBAction func createNewCategory(_ sender: UIBarButtonItem) {
-        
+        showAlert(title: "Create Category", message: "Enter category name")
     }
     
-    private var categories = [Category]()
+    private var categories = [Category]() {
+        didSet {
+            categoriesTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadCategories()
     }
     
+    private func loadCategories() {
+        DBService.manager.getAllCategories { (categories) in
+            self.categories = categories
+        }
+    }
+    
+    func showAlert(title: String, message: String) {
+        var tf = UITextField()
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            tf = textField
+        }
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
+            DBService.manager.addCategory(name: tf.text!)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension CategoriesViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         let category = categories[indexPath.row]
         cell.textLabel?.text = category.name

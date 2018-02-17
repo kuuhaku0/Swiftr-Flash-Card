@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import Firebase
 
 class Category {
     let name: String
-    let createdBy: AppUser
+    let createdBy: String
     
-    init(name: String, createdBy: AppUser) {
+    init(name: String, createdBy: String) {
         self.name = name
         self.createdBy = createdBy
     }
