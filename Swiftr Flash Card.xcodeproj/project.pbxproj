@@ -10,6 +10,9 @@
 		064B770EF6A07D5B5A9A5969 /* Pods_Swiftr_Flash_CardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651B3F8A81FB919439C80B53 /* Pods_Swiftr_Flash_CardUITests.framework */; };
 		67BD967C8D431735228A106F /* Pods_Swiftr_Flash_CardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDB376111DE6C25731F82B5 /* Pods_Swiftr_Flash_CardTests.framework */; };
 		812581D52038C82800DC10A2 /* DBService+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812581D42038C82800DC10A2 /* DBService+Category.swift */; };
+		812581D92038EF4F00DC10A2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812581D72038EF4F00DC10A2 /* CollectionViewCell.swift */; };
+		812581DA2038EF4F00DC10A2 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 812581D82038EF4F00DC10A2 /* CollectionViewCell.xib */; };
+		812581DC2038EFE300DC10A2 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812581DB2038EFE300DC10A2 /* FlashCardViewController.swift */; };
 		81774948203892AD00D3A2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81774947203892AD00D3A2AB /* AppDelegate.swift */; };
 		8177494A203892AD00D3A2AB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81774949203892AD00D3A2AB /* LoginViewController.swift */; };
 		8177494D203892AD00D3A2AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8177494B203892AD00D3A2AB /* Main.storyboard */; };
@@ -17,6 +20,7 @@
 		81774952203892AD00D3A2AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81774950203892AD00D3A2AB /* LaunchScreen.storyboard */; };
 		8177495D203892AD00D3A2AB /* Swiftr_Flash_CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8177495C203892AD00D3A2AB /* Swiftr_Flash_CardTests.swift */; };
 		81774968203892AD00D3A2AB /* Swiftr_Flash_CardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81774967203892AD00D3A2AB /* Swiftr_Flash_CardUITests.swift */; };
+		8179CD4120391B82005C8A94 /* CreateNewCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8179CD4020391B82005C8A94 /* CreateNewCardViewController.swift */; };
 		81EA2CB6203893FB00DCA0D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81EA2CB5203893FB00DCA0D8 /* GoogleService-Info.plist */; };
 		81EA2CB92038951C00DCA0D8 /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EA2CB82038951C00DCA0D8 /* FlashCard.swift */; };
 		81EA2CBB20389FEA00DCA0D8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EA2CBA20389FEA00DCA0D8 /* Category.swift */; };
@@ -56,6 +60,9 @@
 		7E2475FC132B00E7880A12A4 /* Pods-Swiftr Flash CardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiftr Flash CardUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swiftr Flash CardUITests/Pods-Swiftr Flash CardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		806DAF19A29D0846E8A34A53 /* Pods-Swiftr Flash Card.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiftr Flash Card.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swiftr Flash Card/Pods-Swiftr Flash Card.debug.xcconfig"; sourceTree = "<group>"; };
 		812581D42038C82800DC10A2 /* DBService+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+Category.swift"; sourceTree = "<group>"; };
+		812581D72038EF4F00DC10A2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		812581D82038EF4F00DC10A2 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		812581DB2038EFE300DC10A2 /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
 		81774944203892AD00D3A2AB /* Swiftr Flash Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swiftr Flash Card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81774947203892AD00D3A2AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81774949203892AD00D3A2AB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +76,7 @@
 		81774963203892AD00D3A2AB /* Swiftr Flash CardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swiftr Flash CardUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81774967203892AD00D3A2AB /* Swiftr_Flash_CardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swiftr_Flash_CardUITests.swift; sourceTree = "<group>"; };
 		81774969203892AD00D3A2AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8179CD4020391B82005C8A94 /* CreateNewCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewCardViewController.swift; sourceTree = "<group>"; };
 		81EA2CB5203893FB00DCA0D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81EA2CB82038951C00DCA0D8 /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
 		81EA2CBA20389FEA00DCA0D8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -122,6 +130,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		812581D62038EF1100DC10A2 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				812581D72038EF4F00DC10A2 /* CollectionViewCell.swift */,
+				812581D82038EF4F00DC10A2 /* CollectionViewCell.xib */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 		8177493B203892AD00D3A2AB = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +166,7 @@
 			children = (
 				81EA2CCC2038A6E400DCA0D8 /* Services */,
 				81EA2CBC2038A01B00DCA0D8 /* Model */,
+				812581D62038EF1100DC10A2 /* Custom Cell */,
 				81EA2CCB2038A6D600DCA0D8 /* ViewControllers */,
 				81774950203892AD00D3A2AB /* LaunchScreen.storyboard */,
 				8177494B203892AD00D3A2AB /* Main.storyboard */,
@@ -200,8 +218,10 @@
 			isa = PBXGroup;
 			children = (
 				81774949203892AD00D3A2AB /* LoginViewController.swift */,
-				81EA2CC92038A6D000DCA0D8 /* CategoriesViewController.swift */,
 				81EA2CCF2038B8A700DCA0D8 /* CreateAccountViewController.swift */,
+				81EA2CC92038A6D000DCA0D8 /* CategoriesViewController.swift */,
+				812581DB2038EFE300DC10A2 /* FlashCardViewController.swift */,
+				8179CD4020391B82005C8A94 /* CreateNewCardViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -347,6 +367,7 @@
 				81EA2CB6203893FB00DCA0D8 /* GoogleService-Info.plist in Resources */,
 				8177494F203892AD00D3A2AB /* Assets.xcassets in Resources */,
 				8177494D203892AD00D3A2AB /* Main.storyboard in Resources */,
+				812581DA2038EF4F00DC10A2 /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,12 +549,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				812581D52038C82800DC10A2 /* DBService+Category.swift in Sources */,
+				8179CD4120391B82005C8A94 /* CreateNewCardViewController.swift in Sources */,
 				81EA2CD02038B8A700DCA0D8 /* CreateAccountViewController.swift in Sources */,
+				812581D92038EF4F00DC10A2 /* CollectionViewCell.swift in Sources */,
 				81EA2CC62038A2CB00DCA0D8 /* AppUser.swift in Sources */,
 				81EA2CB92038951C00DCA0D8 /* FlashCard.swift in Sources */,
 				81EA2CCA2038A6D000DCA0D8 /* CategoriesViewController.swift in Sources */,
 				8177494A203892AD00D3A2AB /* LoginViewController.swift in Sources */,
 				81EA2CC02038A13E00DCA0D8 /* AuthUserService.swift in Sources */,
+				812581DC2038EFE300DC10A2 /* FlashCardViewController.swift in Sources */,
 				81774948203892AD00D3A2AB /* AppDelegate.swift in Sources */,
 				81EA2CBB20389FEA00DCA0D8 /* Category.swift in Sources */,
 				81EA2CC22038A28400DCA0D8 /* DBService.swift in Sources */,

@@ -41,7 +41,9 @@ class CategoriesViewController: UIViewController {
         let okAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
             DBService.manager.addCategory(name: tf.text!)
         }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(okAction)
+        alertController.addAction(cancel)
         present(alertController, animated: true, completion: nil)
     }
 }

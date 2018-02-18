@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlashCardCell" id="gTV-IL-0wX" customClass="CollectionViewCell" customModule="Swiftr_Flash_Card" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="299" height="337"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="299" height="337"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exb-Zc-2BP">
+                        <rect key="frame" x="0.0" y="0.0" width="299" height="337"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-90-hgM">
+                                <rect key="frame" x="40" y="40" width="219" height="257"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMj-cy-yMO">
+                                        <rect key="frame" x="8" y="88" width="203" height="81.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.92595595119999996" green="0.91985529659999998" blue="0.78208333249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3529411764705882" green="0.3411764705882353" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WMj-cy-yMO" secondAttribute="trailing" constant="8" id="BBJ-ca-D4c"/>
+                                    <constraint firstItem="WMj-cy-yMO" firstAttribute="centerY" secondItem="Ska-90-hgM" secondAttribute="centerY" id="O0g-wo-65H"/>
+                                    <constraint firstItem="WMj-cy-yMO" firstAttribute="leading" secondItem="Ska-90-hgM" secondAttribute="leading" constant="8" id="Ogj-Eg-R9p"/>
+                                    <constraint firstItem="WMj-cy-yMO" firstAttribute="centerX" secondItem="Ska-90-hgM" secondAttribute="centerX" id="bjx-Gm-HCO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ska-90-hgM" secondAttribute="trailing" constant="40" id="AiY-8M-m5f"/>
+                            <constraint firstAttribute="bottom" secondItem="Ska-90-hgM" secondAttribute="bottom" constant="40" id="buD-xF-4Rq"/>
+                            <constraint firstItem="Ska-90-hgM" firstAttribute="top" secondItem="Exb-Zc-2BP" secondAttribute="top" constant="40" id="laX-E8-9J4"/>
+                            <constraint firstItem="Ska-90-hgM" firstAttribute="leading" secondItem="Exb-Zc-2BP" secondAttribute="leading" constant="40" id="qjM-cr-ZOl"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Exb-Zc-2BP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8aM-B9-xFe"/>
+                <constraint firstItem="Exb-Zc-2BP" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="POb-OI-9hN"/>
+                <constraint firstAttribute="trailing" secondItem="Exb-Zc-2BP" secondAttribute="trailing" id="SkA-K6-vGY"/>
+                <constraint firstAttribute="bottom" secondItem="Exb-Zc-2BP" secondAttribute="bottom" id="Yh5-mi-TS0"/>
+                <constraint firstItem="Exb-Zc-2BP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="c7f-dP-hEi"/>
+                <constraint firstItem="Exb-Zc-2BP" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="lcN-OF-2S6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="299" height="337"/>
+            <connections>
+                <outlet property="questionView" destination="Ska-90-hgM" id="5Ir-NT-YHM"/>
+            </connections>
+            <point key="canvasLocation" x="158.5" y="197.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
