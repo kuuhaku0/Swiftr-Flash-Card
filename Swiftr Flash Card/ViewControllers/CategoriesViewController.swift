@@ -32,7 +32,7 @@ class CategoriesViewController: UIViewController {
         }
     }
     
-    func showAlert(title: String, message: String) {
+    private func showAlert(title: String, message: String) {
         var tf = UITextField()
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addTextField { (textField) in
@@ -49,7 +49,6 @@ class CategoriesViewController: UIViewController {
 }
 
 extension CategoriesViewController: UITableViewDataSource {
-    
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
@@ -59,5 +58,14 @@ extension CategoriesViewController: UITableViewDataSource {
         let category = categories[indexPath.row]
         cell.textLabel?.text = category.name
         return cell
+    }
+}
+
+extension CategoriesViewController: UITableViewDelegate {
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        let destinationVC = FlashCardViewController()
+        destinationVC.selectedCategory = cell?.textLabel?.text!
+        self.performSegue(withIdentifier: "FlashCardsSegue", sender: self)
     }
 }

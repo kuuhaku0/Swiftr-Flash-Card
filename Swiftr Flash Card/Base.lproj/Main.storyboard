@@ -117,9 +117,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.32563310861587524" green="0.31748902797698975" blue="0.32567435503005981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="Ihk-WR-7up" kind="show" id="xWu-gT-aRd"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -150,6 +147,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoriesTableView" destination="M3Q-jY-9SI" id="JBJ-pd-eVw"/>
+                        <segue destination="Ihk-WR-7up" kind="show" identifier="FlashCardsSegue" id="4Sb-1d-zyN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X94-1c-LSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,14 +246,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ntH-SF-tzm">
                             <color key="tintColor" red="0.92595595119999996" green="0.91985529659999998" blue="0.78208333249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="jGR-RG-7hq" kind="popoverPresentation" popoverAnchorBarButtonItem="ntH-SF-tzm" id="KfZ-bx-tvn">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <action selector="newFlashCard:" destination="Ihk-WR-7up" id="lbm-b9-D1u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="dhD-OM-oNs" id="Uby-Ix-1wO"/>
+                        <segue destination="jGR-RG-7hq" kind="presentation" identifier="NewFCSegue" id="3Qs-Rh-OXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BA2-1Q-k3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,7 +262,7 @@
         <!--Create New Card View Controller-->
         <scene sceneID="Y8o-R8-9zX">
             <objects>
-                <viewController id="jGR-RG-7hq" customClass="CreateNewCardViewController" customModule="Swiftr_Flash_Card" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateNewCardViewController" id="jGR-RG-7hq" customClass="CreateNewCardViewController" customModule="Swiftr_Flash_Card" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NSJ-M6-cO3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

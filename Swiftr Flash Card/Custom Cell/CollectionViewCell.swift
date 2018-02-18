@@ -11,8 +11,7 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var questionView: UIView!
-    @IBOutlet weak var answerView: UIView!
-    @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     public var flipped = false
     
@@ -20,15 +19,30 @@ class CollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         questionView.layer.cornerRadius = 15
         questionView.layer.borderWidth = 5
-        questionView.layer.borderColor = UIColor(displayP3Red: 239/255, green: 238/255, blue: 202/255, alpha: 1).cgColor
+        questionView.layer.borderColor = UIColor(displayP3Red: 239/255,
+                                                 green: 238/255,
+                                                 blue: 202/255,
+                                                 alpha: 1).cgColor
     }
     
     public func flipCard() {
-        
         if flipped == false{
-            UIView.transition(with: questionView, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: {(flipped) in self.flipped = false })
+            UIView.transition(with: questionView,
+                              duration: 0.5,
+                              options: .transitionFlipFromRight,
+                              animations: nil,
+                              completion: {(flipped) in self.flipped = true })
         } else {
-            UIView.transition(with: questionView, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: {(flipped) in self.flipped = false })
+            UIView.transition(with: questionView,
+                              duration: 0.5,
+                              options: .transitionFlipFromLeft,
+                              animations: nil,
+                              completion: {(flipped) in self.flipped = false })
         }
+    }
+    
+    public func configureCell(with flashCard: FlashCard) {
+        flipped = false
+        questionLabel.text = flashCard.question
     }
 }
