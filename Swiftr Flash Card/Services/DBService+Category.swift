@@ -18,7 +18,7 @@ extension DBService {
                       "createdBy" : category.createdBy])
     }
     
-    func getCurrentUserPosts() -> [Category] {
+    public func getCurrentUserCategories() -> [Category] {
         guard let userId = AuthUserService.getCurrentUser()?.uid else {print("cant get current users posts"); return []}
         return categories.filter{ $0.createdBy ==  userId}
     }

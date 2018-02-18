@@ -14,6 +14,9 @@ class CategoriesViewController: UIViewController {
     @IBAction func createNewCategory(_ sender: UIBarButtonItem) {
         showAlert(title: "Create Category", message: "Enter category name")
     }
+    @IBAction func logoutButtonPressed(_ sender: UIBarButtonItem) {
+        authUserService.signOut()
+    }
     
     private var categories = [Category]() {
         didSet {
@@ -21,33 +24,33 @@ class CategoriesViewController: UIViewController {
         }
     }
     
+    let authUserService = AuthUserService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCategories()
+        authUserService.delegate = self
     }
     
     private func loadCategories() {
         DBService.manager.getAllCategories { (categories) in
-            self.categories = categories
+            self.categories = categories.reversed()
         }
     }
     
     private func showAlert(title: String, message: String) {
         var tf = UITextField()
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-            tf = textField
-        }
+        alertController.addTextField { (textField) in tf = textField } // escape closure scope
         let okAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
-            DBService.manager.addCategory(name: tf.text!)
-        }
+            DBService.manager.addCategory(name: tf.text!)}
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(okAction)
         alertController.addAction(cancel)
         present(alertController, animated: true, completion: nil)
     }
 }
-
+// MARK: - TableView DataSource
 extension CategoriesViewController: UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
@@ -61,11 +64,21 @@ extension CategoriesViewController: UITableViewDataSource {
     }
 }
 
-extension CategoriesViewController: UITableViewDelegate {
-    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        let destinationVC = FlashCardViewController()
-        destinationVC.selectedCategory = cell?.textLabel?.text!
-        self.performSegue(withIdentifier: "FlashCardsSegue", sender: self)
+extension CategoriesViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let category = categories[categoriesTableView.indexPathForSelectedRow!.row]
+        if let destinationVC = segue.destination as? FlashCardViewController {
+            destinationVC.selectedCategory = category
+        }
+    }
+}
+
+extension CategoriesViewController: AuthUserServiceDelegate {
+    
+    internal func didSignOut(_ userService: AuthUserService) {
+        dismiss(animated: true, completion: nil)
+    }
+    internal func didFailSigningOut(_ userService: AuthUserService, error: Error) {
+        showAlert(title: "Error", message: error.localizedDescription)
     }
 }

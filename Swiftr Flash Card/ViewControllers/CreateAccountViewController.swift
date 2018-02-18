@@ -12,6 +12,7 @@ class CreateAccountViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    // Create Account
     @IBAction func createAccountButtonPressed(_ sender: UIButton) {
         guard let email = emailTextField.text else {showAlert(title: "Error", message: "E-mail cannot be blank"); return}
         guard let password = passwordTextField.text else {showAlert(title: "Error", message: "Password cannot be blank"); return}
@@ -35,7 +36,7 @@ class CreateAccountViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
-
+// MARK: - AuthUserServiceDelegate Methods
 extension CreateAccountViewController: AuthUserServiceDelegate {
     func didCreateUser(_ userService: AuthUserService, user: AppUser) {
         showAlert(title: "Success", message: "Successfully created new account")

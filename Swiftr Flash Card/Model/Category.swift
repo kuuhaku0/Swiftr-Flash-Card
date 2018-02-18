@@ -17,8 +17,4 @@ class Category {
         self.name = name
         self.createdBy = createdBy
     }
-    
-    deinit {
-        print("category deinitialized")
-    }
 }

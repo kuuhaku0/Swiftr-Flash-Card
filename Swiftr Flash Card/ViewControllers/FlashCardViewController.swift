@@ -10,56 +10,50 @@ import UIKit
 
 class FlashCardViewController: UIViewController {
     
-//    init(selectedCategory: String) {
-//        super.init(nibName: nil, bundle: nil)
-//        self.selectedCategory = selectedCategory
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    // Properties
+    public var selectedCategory: Category! {
+        didSet {
+            loadFlashCards(from: selectedCategory.name)
+        }
+    }
+    private let cellSpacing: CGFloat = 10
+    private let reuseIdentifier = "FlashCardCell"
+    private var flashCards = [FlashCard]() {
+        didSet {
+            self.collectionView?.reloadData()
+        }
+    }
     
+    // Register nib and enable pagination for collectionView
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.register(UINib.init(nibName: "CollectionViewCell", bundle: nil),
                                     forCellWithReuseIdentifier: "FlashCardCell")
             collectionView.isPagingEnabled = true
+            collectionView.bounces = false
         }
     }
-    
     @IBAction func newFlashCard(_ sender: UIBarButtonItem) {
-        let destinationVC = CreateNewCardViewController()
-        destinationVC.selectedCategory = self.selectedCategory
         performSegue(withIdentifier: "NewFCSegue", sender: self)
     }
-    
-    // Properties
-    private let cellSpacing: CGFloat = 10
-    private let reuseIdentifier = "FlashCardCell"
-    private var flashCards = [FlashCard]()
-    public var selectedCategory: String! {
-        didSet {
-            loadFlashCards(from: "something")
-        }
-    }
+    @IBOutlet weak var progressionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadFlashCards(from: "something")
+        navigationItem.title = selectedCategory.name
     }
-    
+    // Firebase observer
     private func loadFlashCards(from category: String) {
         DBService.manager.getAllFlashCards(forCategory: category) { (flashCards) in
-            self.flashCards = flashCards
-            self.collectionView?.reloadData()
+            self.flashCards = flashCards.reversed()
         }
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destinationVC = segue.destination as? CreateNewCardViewController {
-//            destinationVC.selectedCategory = self.selectedCategory
-//        }
-//    }
+    // Segue and pass selectedCategory
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? CreateNewCardViewController {
+            destinationVC.selectedCategory = self.selectedCategory
+        }
+    }
 }
 
 // MARK: - CollectionView Methods
@@ -76,6 +70,7 @@ extension FlashCardViewController: UICollectionViewDelegate {
     }
 }
 
+// CollectionView dataSource
 extension FlashCardViewController: UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return flashCards.count
@@ -89,6 +84,7 @@ extension FlashCardViewController: UICollectionViewDataSource {
     }
 }
 
+// CollectionView flow layout
 extension FlashCardViewController: UICollectionViewDelegateFlowLayout {
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -99,6 +95,17 @@ extension FlashCardViewController: UICollectionViewDelegateFlowLayout {
     }
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+extension FlashCardViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let midX: CGFloat = scrollView.bounds.midX
+        let midY: CGFloat = scrollView.bounds.midY
+        let point: CGPoint = CGPoint(x: midX, y: midY)
+        guard let indexPath: IndexPath = collectionView.indexPathForItem(at: point) else {return}
+        let currentIndex: Int = indexPath.item
+        progressionLabel.text = "\(currentIndex + 1) / \(flashCards.count)"
     }
 }
 

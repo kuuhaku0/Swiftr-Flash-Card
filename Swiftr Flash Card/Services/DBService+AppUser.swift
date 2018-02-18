@@ -16,13 +16,10 @@ extension DBService {
                       "uID": appUser.uID])
     }
     
-    func getAppUser(with uID: String, completion: @escaping (_ user: AppUser) -> Void) {
+    public func getAppUser(with uID: String, completion: @escaping (_ user: AppUser) -> Void) {
         let userRef = usersRef.child(uID)
-        
         userRef.observeSingleEvent(of: .value) { (snapshot) in
-            
             guard let email = snapshot.childSnapshot(forPath: "email").value as? String else {return}
-            
             let currentAppUser = AppUser(uid: uID, email: email)
             completion(currentAppUser)
         }

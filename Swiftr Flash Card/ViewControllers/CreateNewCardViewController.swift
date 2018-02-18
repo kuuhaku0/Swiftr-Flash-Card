@@ -9,19 +9,18 @@
 import UIKit
 
 class CreateNewCardViewController: UIViewController {
-
+    
     @IBOutlet weak var questionTF: UITextField!
     @IBOutlet weak var answerTF: UITextField!
+    // Create new flash card
     @IBAction func createNewCard(_ sender: UIButton) {
-        DBService.manager.addFlashCard(question: questionTF.text!, answer: answerTF.text!, category: "something")
-    }
-    @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        DBService.manager.addFlashCard(question: questionTF.text!, answer: answerTF.text!, category: selectedCategory.name)
+        showAlert(title: "Success", message: "Created new flash card in \(selectedCategory.name)")
     }
     
-    public var selectedCategory: String! {
+    public var selectedCategory: Category! {
         didSet {
-            print("got category \(selectedCategory)")
+            print("got category \(selectedCategory.name)")
         }
     }
     
@@ -29,9 +28,14 @@ class CreateNewCardViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    public static func storyboardInstance() -> CreateNewCardViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let createNewCardVC = storyboard.instantiateViewController(withIdentifier: "CreateNewCardViewController") as! CreateNewCardViewController
-        return createNewCardVC
+    private func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
+            self.questionTF.text = ""
+            self.answerTF.text = ""
+            self.resignFirstResponder()
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 }

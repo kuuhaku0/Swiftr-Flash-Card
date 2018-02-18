@@ -117,6 +117,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.32563310861587524" green="0.31748902797698975" blue="0.32567435503005981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="Ihk-WR-7up" kind="show" id="7fl-SU-tXx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -137,6 +140,9 @@
                     <navigationItem key="navigationItem" title="Categories" id="7rc-A4-lTP">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="Zn8-iQ-l1r">
                             <color key="tintColor" red="0.95341509580612183" green="0.94737356901168823" blue="0.80542844533920288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="pBC-OT-bZS" id="Xj9-n5-WRx"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VOn-ZQ-6Bp">
                             <color key="tintColor" red="0.95341509580612183" green="0.94737356901168823" blue="0.80542844533920288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,7 +153,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoriesTableView" destination="M3Q-jY-9SI" id="JBJ-pd-eVw"/>
-                        <segue destination="Ihk-WR-7up" kind="show" identifier="FlashCardsSegue" id="4Sb-1d-zyN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X94-1c-LSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,7 +257,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="dhD-OM-oNs" id="Uby-Ix-1wO"/>
-                        <segue destination="jGR-RG-7hq" kind="presentation" identifier="NewFCSegue" id="3Qs-Rh-OXV"/>
+                        <outlet property="progressionLabel" destination="HHY-lJ-6cc" id="iPm-gp-XjN"/>
+                        <segue destination="jGR-RG-7hq" kind="show" identifier="NewFCSegue" id="3Qs-Rh-OXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BA2-1Q-k3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,38 +270,29 @@
             <objects>
                 <viewController storyboardIdentifier="CreateNewCardViewController" id="jGR-RG-7hq" customClass="CreateNewCardViewController" customModule="Swiftr_Flash_Card" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NSJ-M6-cO3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9T-dp-jbr">
-                                <rect key="frame" x="16" y="20" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.95341509579999995" green="0.94737356900000003" blue="0.80542844530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonPressed:" destination="jGR-RG-7hq" eventType="touchUpInside" id="760-zs-Ylz"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n37-RW-pZo">
-                                <rect key="frame" x="49" y="102.5" width="277.5" height="45.5"/>
+                                <rect key="frame" x="49" y="22.5" width="277.5" height="45.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1hz-CC-8m3">
-                                <rect key="frame" x="47" y="180" width="281" height="30"/>
+                                <rect key="frame" x="47" y="100" width="281" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJ8-mT-b5S">
-                                <rect key="frame" x="47" y="226" width="281" height="30"/>
+                                <rect key="frame" x="47" y="146" width="281" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5a-AP-Hw5">
-                                <rect key="frame" x="47" y="272" width="281" height="30"/>
+                                <rect key="frame" x="47" y="192" width="281" height="30"/>
                                 <color key="backgroundColor" red="0.20779138799999999" green="0.20770975950000001" blue="0.21597188710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Create">
                                     <color key="titleColor" red="0.65513437990000001" green="0.65222650770000001" blue="0.57711946960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -313,13 +310,11 @@
                             <constraint firstItem="1hz-CC-8m3" firstAttribute="top" secondItem="n37-RW-pZo" secondAttribute="bottom" constant="32" id="EQl-5C-MOz"/>
                             <constraint firstItem="n37-RW-pZo" firstAttribute="centerX" secondItem="NSJ-M6-cO3" secondAttribute="centerX" id="HIe-7a-9AK"/>
                             <constraint firstItem="wJ8-mT-b5S" firstAttribute="width" secondItem="1hz-CC-8m3" secondAttribute="width" id="IVJ-ng-eQi"/>
-                            <constraint firstItem="R9T-dp-jbr" firstAttribute="leading" secondItem="JDA-31-idT" secondAttribute="leading" constant="16" id="OeZ-oF-wxE"/>
                             <constraint firstItem="a5a-AP-Hw5" firstAttribute="top" secondItem="wJ8-mT-b5S" secondAttribute="bottom" constant="16" id="XYR-8v-8wK"/>
-                            <constraint firstItem="1hz-CC-8m3" firstAttribute="top" secondItem="JDA-31-idT" secondAttribute="top" multiplier="9" id="cwq-o3-ABY"/>
+                            <constraint firstItem="1hz-CC-8m3" firstAttribute="top" secondItem="JDA-31-idT" secondAttribute="top" constant="100" id="cwq-o3-ABY"/>
                             <constraint firstItem="1hz-CC-8m3" firstAttribute="centerX" secondItem="NSJ-M6-cO3" secondAttribute="centerX" id="dvZ-rz-fGm"/>
                             <constraint firstItem="1hz-CC-8m3" firstAttribute="width" secondItem="NSJ-M6-cO3" secondAttribute="width" multiplier="0.75" id="jcv-j6-dul"/>
                             <constraint firstItem="wJ8-mT-b5S" firstAttribute="top" secondItem="1hz-CC-8m3" secondAttribute="bottom" constant="16" id="m4o-NR-Oz0"/>
-                            <constraint firstItem="R9T-dp-jbr" firstAttribute="top" secondItem="JDA-31-idT" secondAttribute="top" id="mqu-EY-zd2"/>
                             <constraint firstItem="a5a-AP-Hw5" firstAttribute="width" secondItem="wJ8-mT-b5S" secondAttribute="width" id="sE9-XJ-2A2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JDA-31-idT"/>
@@ -341,17 +336,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zPp-HK-TIG">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zPp-HK-TIG">
                                 <rect key="frame" x="47" y="180" width="281" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1E6-fK-nIt">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1E6-fK-nIt">
                                 <rect key="frame" x="47" y="226" width="281" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fik-SZ-uAw">
                                 <rect key="frame" x="46.5" y="272" width="281" height="30"/>

@@ -21,7 +21,7 @@ extension DBService {
                       "correct"   : flashCard.correct])
     }
     
-    func getCurrentUserFlashCards() -> [FlashCard] {
+    public func getCurrentUserFlashCards() -> [FlashCard] {
         guard let userId = AuthUserService.getCurrentUser()?.uid else {print("cant get current users posts"); return []}
         return flashCards.filter{ $0.creator ==  userId}
     }

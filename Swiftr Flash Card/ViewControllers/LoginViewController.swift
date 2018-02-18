@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    // Login
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             authUserService.signIn(withEmail: email, password: password)
@@ -34,14 +35,13 @@ class LoginViewController: UIViewController {
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
-
 }
 
+//MARK: - AuthUserServiceDelegate Methods
 extension LoginViewController: AuthUserServiceDelegate {
     func didSignIn(_ userService: AuthUserService, user: AppUser) {
         performSegue(withIdentifier: "loginSegue", sender: self)
     }
-    
     func didFailSigningIn(_ userService: AuthUserService, error: Error) {
         showAlert(title: "Error", message: "\(error)")
     }
